@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="edu20191116.day1.dao.mapper.EmpMapper">
+
+	<resultMap type="edu20191116.day1.vo.EmpInfo"
+		id="empResultMap">
+		<id property="empno" column="empno" />
+		<result property="ename" column="ename" />
+		<result property="job" column="job" />
+		<result property="mgr" column="mgr" />
+		<result property="hiredate" column="hiredate" />
+		<result property="sal" column="sal" />
+		<result property="deptno" column="deptno" />
+	</resultMap>
+	<insert id="addEmp" useGeneratedKeys="true" keyProperty="empno"
+		parameterType="edu20191116.day1.vo.EmpInfo">
+		insert into emp(empno,ename,job,mgr,hiredate,sal,deptno)
+		values(null,#{ename},#{job},#{mgr},#{hiredate},#{sal},#{deptno})
+	</insert>
+
+	<update id="updateEmp">
+		update emp set
+		ename=#{ename},job=#{job},mgr=#{mgr},hiredate=#{hiredate},sal=#{sal},deptno=#{deptno}
+		where
+		empno = #{empno}
+	</update>
+
+</mapper>
